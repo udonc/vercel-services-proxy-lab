@@ -1,0 +1,8 @@
+{
+  "name": "vercel-services-proxy-lab",
+  "private": true,
+  "dependencies": {
+    "@vercel/functions": "3.9.11"
+  },
+  "packageManager": "pnpm@12.9.1"
+}
