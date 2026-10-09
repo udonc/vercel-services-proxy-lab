@@ -43,7 +43,7 @@ Environment: deployed with Vercel CLI 62.4.0 (`vercel deploy`, no `--prebuilt`);
 | `GET /` | 200, `x-proxy-ran`, `Set-Cookie` (also on cache HIT) | 200, `x-next-proxy-ran` (prerendered page) | 200, both headers |
 | `GET /from-proxy` | 200 `hi from top-level proxy` | 404 (Next.js not-found page, `x-next-proxy-ran`) | 200 from the top-level proxy, no `x-next-proxy-ran` |
 | `GET /protected` without cookie | 302 → `/login` | 200 (page renders) | 302 → `/login` |
-| `GET /protected` with `session=1` | 200, `x-proxy-ran` | 200, `x-next-proxy-ran` | 200, both headers |
+| `GET /protected` with `session=1` | 200, `x-proxy-ran`; page renders `x-from-proxy request header: 1` | 200, `x-next-proxy-ran`; page renders `x-from-proxy request header: absent` | 200, both headers; page renders `x-from-proxy request header: 1` |
 | `GET /api/hello` | 200, `fromProxy: "1"` | 200, `fromProxy: null` | 200, `fromProxy: "1"` |
 | `GET /web-proxy-check` | 404 (no Next.js proxy) | 200 `{"ranIn":"next-proxy"}` | 200 `{"ranIn":"next-proxy","fromProxy":"1"}` |
 
