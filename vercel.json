@@ -7,5 +7,5 @@
     }
   },
   "rewrites": [{ "source": "/(.*)", "destination": { "service": "web" } }],
-  "proxy": { "entrypoint": "proxy.ts" }
+  "proxy": { "entrypoint": "routing-proxy.ts" }
 }

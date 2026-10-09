@@ -10,8 +10,8 @@ Related upstream reports: [vercel/vercel#16915](https://github.com/vercel/vercel
 
 | Path | Role |
 | --- | --- |
-| `vercel.json` | One service (`web`, Next.js) behind a catch-all rewrite, plus `proxy.entrypoint` pointing at `proxy.ts` |
-| `proxy.ts` | Top-level Routing Middleware. Answers `/from-proxy` directly, redirects `/protected` to `/login` without a `session` cookie, otherwise falls through with `x-proxy-ran: 1` and a `Set-Cookie` |
+| `vercel.json` | One service (`web`, Next.js) behind a catch-all rewrite, plus `proxy.entrypoint` pointing at `routing-proxy.ts` |
+| `routing-proxy.ts` | Top-level Routing Middleware. Answers `/from-proxy` directly, redirects `/protected` to `/login` without a `session` cookie, otherwise falls through with `x-proxy-ran: 1`, a `Set-Cookie`, and an `x-from-proxy` request header for the service. Not named `proxy.ts` on purpose; see Results |
 | `web/` | Minimal Next.js 16 app: `/` (static), `/protected` (dynamic, echoes the cookie), `/login`, `/api/hello` |
 | `check.sh` | Request matrix that prints the status and the headers identifying which layer handled each path |
 
