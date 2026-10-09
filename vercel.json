@@ -6,6 +6,12 @@
       "framework": "nextjs"
     }
   },
-  "rewrites": [{ "source": "/(.*)", "destination": { "service": "web" } }],
-  "proxy": { "entrypoint": "routing-proxy.ts" }
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "web"
+      }
+    }
+  ]
 }
